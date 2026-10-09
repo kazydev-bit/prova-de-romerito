@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Editar Leitura{% endblock %}
+
+{% block content %}
+<h2>Editar leitura</h2>
+
+<form method="post">
+    <label for="titulo">Título</label>
+    <input id="titulo" name="titulo" value="{{ leitura['titulo'] }}" required>
+
+    <label for="autor">Autor</label>
+    <input id="autor" name="autor" value="{{ leitura['autor'] }}" required>
+
+    <label for="paginas">Número de páginas</label>
+    <input id="paginas" name="paginas" type="number" min="1" value="{{ leitura['paginas'] }}" required>
+
+    <p><button type="submit">Atualizar</button></p>
+</form>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Nova Leitura{% endblock %}
+
+{% block content %}
+<h2>Nova leitura</h2>
+
+<form method="post">
+    <label for="titulo">Título</label>
+    <input id="titulo" name="titulo" required>
+
+    <label for="autor">Autor</label>
+    <input id="autor" name="autor" required>
+
+    <label for="paginas">Número de páginas</label>
+    <input id="paginas" name="paginas" type="number" min="1" required>
+
+    <p><button type="submit">Salvar</button></p>
+</form>
+{% endblock %}

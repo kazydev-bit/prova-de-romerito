@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Leituras{% endblock %}
+
+{% block content %}
+<h2>Minhas leituras</h2>
+
+{% if leituras %}
+    {% for leitura in leituras %}
+        <section class="card">
+            <h3>{{ leitura["titulo"] }}</h3>
+            <p><strong>Autor:</strong> {{ leitura["autor"] }}</p>
+            <p><strong>Páginas:</strong> {{ leitura["paginas"] }}</p>
+            <p>
+                <strong>Status:</strong>
+                {% if leitura["concluida"] %}
+                    concluída
+                {% else %}
+                    em andamento
+                {% endif %}
+            </p>
+
+            <div class="actions">
+                <a class="button" href="{{ url_for('leituras.editar_leitura', leitura_id=leitura['id']) }}">Editar</a>
+
+                <form method="post" action="{{ url_for('leituras.concluir_leitura', leitura_id=leitura['id']) }}">
+                    <button type="submit">Alternar status</button>
+                </form>
+
+                <form method="post" action="{{ url_for('leituras.excluir_leitura', leitura_id=leitura['id']) }}">
+                    <button class="danger" type="submit">Excluir</button>
+                </form>
+            </div>
+        </section>
+    {% endfor %}
+{% else %}
+    <p class="muted">Nenhuma leitura cadastrada.</p>
+{% endif %}
+{% endblock %}
